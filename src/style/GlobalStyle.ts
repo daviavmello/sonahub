@@ -26,8 +26,9 @@ input {
   background: transparent;
   color: ${colors.secondary};
   border: 0;
-  border-bottom: 1px solid ${colors.medium};
-  padding: 0.5rem 0;
+  border: 2px solid ${colors.medium};
+  border-radius: 0.5rem;
+  padding: 0.5rem;
   /* flex: 1 1 calc(10% - 2rem); */
   ::placeholder {
     color: ${colors.medium};
@@ -35,7 +36,8 @@ input {
   }
   :focus {
     outline: none;
-    border-bottom: 1px solid ${colors.light};
+    box-shadow: -5px 0px 15px 5px rgb(0 0 0 / 40%);
+    border: 2px solid ${colors.light};
     transition: all 0.5s linear;
   }
 }
@@ -48,6 +50,7 @@ input {
     }
     h3 {
       font-size: 3rem;
+      margin-bottom: 1rem;
     }
 } 
 
@@ -57,7 +60,8 @@ input {
       margin: 2rem;
     }
     h3 {
-      font-size: 4rem;
+      font-size: 2rem;
+      margin-bottom: 2rem;
     }
 }
 
@@ -67,7 +71,8 @@ input {
       margin: 2rem 10vw;
     }
     h3 {
-      font-size: 6rem;
+      font-size: 4rem;
+      margin-bottom: 2rem;
     }
 }
 `;

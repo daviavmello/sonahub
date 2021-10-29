@@ -1,13 +1,14 @@
 import React from "react";
+import { Sun } from "react-feather";
 import styled from "styled-components";
+import { colors } from "../../style/colors";
 import { Logo } from "./Logo";
-import { SearchBar } from "./SearchBar";
 
 export const Navbar: React.FC = () => {
   return (
     <NavWrapper>
       <Logo />
-      <SearchBar />
+      <ColorModeIcon />
     </NavWrapper>
   );
 };
@@ -17,6 +18,12 @@ const NavWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  padding-bottom: 2rem;
+  /* position: sticky; */
+  margin-bottom: 2rem;
+  height: 5vh;
+`;
+
+const ColorModeIcon = styled(Sun)`
+  width: fit-content;
+  color: ${colors.medium};
 `;
