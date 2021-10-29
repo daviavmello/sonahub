@@ -5,19 +5,19 @@ const GlobalStyle = createGlobalStyle`
 * {
   margin: 0;
   padding: 0;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 html {
   background: ${colors.primary};
 h1 {
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   text-transform: capitalize;
   color: ${colors.medium};
   margin: 0;
   font-weight: 400;
+  font-size: x-large;
 }
 
 h3 {
-  font-family: Arial, Helvetica, sans-serif;
   color: ${colors.light};
 }
 
@@ -28,7 +28,6 @@ input {
   border: 0;
   border-bottom: 1px solid ${colors.medium};
   padding: 0.5rem 0;
-  font-size: 1rem;
   /* flex: 1 1 calc(10% - 2rem); */
   ::placeholder {
     color: ${colors.medium};
