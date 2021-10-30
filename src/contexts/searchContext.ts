@@ -6,6 +6,12 @@ export interface IUsers {
   items?: any[];
 }
 
+export interface IUserRepo {
+  owner?: string;
+  repo?: string;
+  openModal: boolean;
+}
+
 export interface ISearchContext {
   search: string;
   setSearch: (search: string) => void;
@@ -13,6 +19,8 @@ export interface ISearchContext {
   setUsers: (users: IUsers) => void;
   theme: string;
   setTheme: (theme: string) => void;
+  userRepo: IUserRepo;
+  setUserRepo: (repo: IUserRepo) => void;
 }
 
 export const SearchContext = createContext<ISearchContext>({
@@ -22,5 +30,7 @@ export const SearchContext = createContext<ISearchContext>({
   setUsers: (users: IUsers) => users,
   theme: "dark",
   setTheme: (theme: string) => theme,
+  userRepo: { openModal: false },
+  setUserRepo: (repo: IUserRepo) => repo,
 });
 export const useSearch = () => useContext(SearchContext);

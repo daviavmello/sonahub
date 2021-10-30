@@ -5,19 +5,22 @@ import { SearchCard } from "./SearchCard";
 
 export const SearchResults: React.FC = () => {
   const { users } = useSearch();
+  // const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <SearchResultsWrapper>
       <CardWrapper>
         {users &&
           users.items?.map((v, i) => {
-            console.log(v.full_name);
+            // console.log(v);
 
             return (
               <SearchCard
                 key={i}
                 title={v.full_name}
-                description={v.decription}
+                description={v.description}
                 stars={v.stargazers_count}
+                owner={v.owner.login}
+                repo={v.name}
               ></SearchCard>
             );
           })}
@@ -37,9 +40,9 @@ const CardWrapper = styled.div`
 
 const SearchResultsWrapper = styled.div`
   width: calc(50vw - 7.5rem);
-  height: calc(95vh - 7rem);
+  height: calc(95vh - 6rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1rem 0 0 1rem;
+  padding-left: 1rem;
 `;
