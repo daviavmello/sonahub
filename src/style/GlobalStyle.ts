@@ -17,7 +17,7 @@ h1 {
   font-size: x-large;
 }
 
-h3 {
+h2 {
   color: ${colors.light};
 }
 
@@ -36,7 +36,7 @@ input {
   }
   :focus {
     outline: none;
-    box-shadow: -5px 0px 15px 5px rgb(0 0 0 / 40%);
+    box-shadow: 0px 0px 15px 5px rgb(0 0 0 / 30%);
     border: 2px solid ${colors.light};
     transition: all 0.5s linear;
   }
@@ -48,7 +48,7 @@ input {
     html {
       margin: 1rem;
     }
-    h3 {
+    h2 {
       font-size: 3rem;
       margin-bottom: 1rem;
     }
@@ -59,7 +59,7 @@ input {
     html {
       margin: 2rem;
     }
-    h3 {
+    h2 {
       font-size: 2rem;
       margin-bottom: 2rem;
     }
@@ -70,8 +70,8 @@ input {
     html {
       margin: 2rem 10vw;
     }
-    h3 {
-      font-size: 4rem;
+    h2 {
+      font-size: 3rem;
       margin-bottom: 2rem;
     }
 }
