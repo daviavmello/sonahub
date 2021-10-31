@@ -18,7 +18,12 @@ h1 {
 }
 
 h2 {
-  color: ${colors.light};
+  color: ${colors.tertiary};
+  margin-bottom: 2rem;
+}
+
+p {
+  line-height: 1.7rem;
 }
 
 input {
@@ -29,15 +34,33 @@ input {
   border: 2px solid ${colors.medium};
   border-radius: 0.5rem;
   padding: 0.5rem;
-  /* flex: 1 1 calc(10% - 2rem); */
   ::placeholder {
+    font-family: "Consolas", "Courier", monospace;
     color: ${colors.medium};
     text-transform: capitalize;
   }
   :focus {
     outline: none;
     box-shadow: 0px 0px 15px 5px rgb(0 0 0 / 30%);
-    border: 2px solid ${colors.light};
+    border: 2px solid ${colors.tertiary};
+    transition: all 0.5s linear;
+  }
+}
+
+button {
+  color: ${colors.medium};
+  background: ${colors.primary};
+  padding: 0.25rem 0.5rem;
+  border: 1px solid ${colors.medium};
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  font-family: "Consolas", "Courier", monospace;
+  font-size: 0.75rem;
+  cursor: pointer;
+  &:hover {
+    outline: none;
+    border: 1px solid ${colors.tertiary};
+    color: ${colors.tertiary};
     transition: all 0.5s linear;
   }
 }
@@ -49,8 +72,7 @@ input {
       margin: 1rem;
     }
     h2 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+      font-size: 2rem;
     }
 } 
 
@@ -61,7 +83,6 @@ input {
     }
     h2 {
       font-size: 2rem;
-      margin-bottom: 2rem;
     }
 }
 
@@ -72,7 +93,6 @@ input {
     }
     h2 {
       font-size: 3rem;
-      margin-bottom: 2rem;
     }
 }
 `;

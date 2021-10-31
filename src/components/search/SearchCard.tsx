@@ -19,9 +19,7 @@ export const SearchCard: React.FC<ISearchCard> = ({
   owner,
   repo,
 }) => {
-  const { setUserRepo, userRepo } = useSearch();
-
-  console.log(userRepo);
+  const { setUserRepo } = useSearch();
 
   return (
     <Card onClick={() => setUserRepo({ owner, repo, openModal: true })}>
@@ -39,7 +37,7 @@ export const SearchCard: React.FC<ISearchCard> = ({
 
 const Card = styled.div`
   background: ${colors.medium};
-  margin: 1rem 0 1rem 1rem;
+  margin: 1rem;
   padding: 1rem;
   cursor: pointer;
   border: 2px solid ${colors.medium};

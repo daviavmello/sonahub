@@ -1,14 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { useSearch } from "../../contexts/searchContext";
+import { Commits } from "./Commits";
 import { SearchCard } from "./SearchCard";
 
 export const SearchResults: React.FC = () => {
-  const { users } = useSearch();
-  // const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { users, userRepo } = useSearch();
+  const { openModal } = userRepo;
+  
   return (
     <SearchResultsWrapper>
-      <CardWrapper>
+      {openModal && <Commits />}
+      <CardWrapper openModal={openModal}>
         {users &&
           users.items?.map((v, i) => {
             // console.log(v);
@@ -29,7 +32,12 @@ export const SearchResults: React.FC = () => {
   );
 };
 
-const CardWrapper = styled.div`
+interface ICardWrapper {
+  openModal: boolean;
+}
+
+const CardWrapper = styled.div<ICardWrapper>`
+  position: ${(props) => (props.openModal ? "relative" : "static")};
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -45,4 +53,17 @@ const SearchResultsWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   padding-left: 1rem;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  @media (min-width: 768px) {
+    width: calc(50vw - 3rem);
+  }
+
+  @media (min-width: 992px) {
+    width: calc(40vw - 1rem);
+  }
 `;
