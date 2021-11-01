@@ -12,7 +12,7 @@ export const SearchResults: React.FC = () => {
     <SearchResultsWrapper>
       {openModal && <Commits />}
       <CardWrapper openModal={openModal}>
-        {users &&
+        {users.items &&
           users.items?.map((v, i) => (
             <SearchCard
               key={i}

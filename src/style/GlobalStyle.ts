@@ -42,6 +42,7 @@ input {
   border: 2px solid ${({ theme }) => theme.medium};
   border-radius: 0.5rem;
   padding: 0.5rem;
+  margin-bottom: 2rem;
   ::placeholder {
     font-family: "Consolas", "Courier", monospace;
     color: ${({ theme }) => theme.medium};
