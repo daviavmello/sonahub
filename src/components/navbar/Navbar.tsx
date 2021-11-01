@@ -35,12 +35,12 @@ const NavWrapper = styled.div`
 
 const SunIcon = styled(Sun)`
   cursor: pointer;
-  width: fit-content;
+  width: auto;
   color: ${({ theme }) => theme.medium};
 `;
 
 const MoonIcon = styled(Moon)`
   cursor: pointer;
-  width: fit-content;
+  width: auto;
   color: ${({ theme }) => theme.medium};
 `;

@@ -29,7 +29,7 @@ export const Hero: React.FC = () => {
 };
 
 const HeroWrapper = styled.div`
-  width: calc(50vw - 7.5rem);
+  width: calc(50% - 7.5rem);
   height: calc(95vh - 6rem);
   display: flex;
   flex-direction: column;
@@ -42,11 +42,11 @@ const HeroWrapper = styled.div`
   }
 
   @media (min-width: 768px) {
-    width: calc(50vw - 3rem);
+    width: calc(50% - 1rem);
   }
 
   @media (min-width: 992px) {
-    width: calc(40vw - 1rem);
+    width: calc(50% - 1rem);
   }
 `;
 

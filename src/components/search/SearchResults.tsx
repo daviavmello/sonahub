@@ -9,9 +9,9 @@ export const SearchResults: React.FC = () => {
   const { openModal } = userRepo;
 
   return (
-    <SearchResultsWrapper>
+    <SearchResultsWrapper openModal={openModal}>
       {openModal && <Commits />}
-      <CardWrapper openModal={openModal}>
+      <CardWrapper>
         {users.items &&
           [...users.items]
             ?.sort((a, b) => (a.stargazers_count < b.stargazers_count ? 1 : -1))
@@ -34,8 +34,7 @@ interface ICardWrapper {
   openModal: boolean;
 }
 
-const CardWrapper = styled.div<ICardWrapper>`
-  position: ${(props) => (props.openModal ? "relative" : "static")};
+const CardWrapper = styled.div`
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -44,8 +43,9 @@ const CardWrapper = styled.div<ICardWrapper>`
   }
 `;
 
-const SearchResultsWrapper = styled.div`
-  width: calc(50vw - 7.5rem);
+const SearchResultsWrapper = styled.div<ICardWrapper>`
+  position: ${(props) => (props.openModal ? "relative" : "static")};
+  width: calc(50% - 7.5rem);
   height: calc(95vh - 6rem);
   display: flex;
   flex-direction: column;
@@ -58,10 +58,10 @@ const SearchResultsWrapper = styled.div`
   }
 
   @media (min-width: 768px) {
-    width: calc(50vw - 3rem);
+    width: calc(50% - 1rem);
   }
 
   @media (min-width: 992px) {
-    width: calc(40vw - 1rem);
+    width: calc(50% - 1rem);
   }
 `;

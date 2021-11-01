@@ -20,6 +20,6 @@ const LogoWrapper = styled.div`
 
 const BoxLogo = styled(Box)`
   margin-right: 1rem;
-  width: fit-content;
+  width: auto;
   color: ${({ theme }) => theme.medium};
 `;

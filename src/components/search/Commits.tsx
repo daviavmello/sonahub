@@ -56,7 +56,7 @@ export const Commits: React.FC = () => {
 const CommitsWrapper = styled.div`
   position: absolute;
   z-index: 1;
-  width: inherit;
+  width: calc(100% - 1rem);
   height: inherit;
   background: ${({ theme }) => theme.primary};
   overflow: auto;
