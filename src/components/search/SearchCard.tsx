@@ -2,6 +2,7 @@ import React from "react";
 import { Star } from "react-feather";
 import styled from "styled-components";
 import { useSearch } from "../../contexts/searchContext";
+import { numberFormatter } from "../../helpers/numberHelper";
 
 interface ISearchCard {
   title: string;
@@ -28,7 +29,7 @@ export const SearchCard: React.FC<ISearchCard> = ({
       </Description>
       <IconWrapper>
         <StarIcon />
-        <p>{stars}</p>
+        <p>{numberFormatter(Number(stars))}</p>
       </IconWrapper>
     </Card>
   );

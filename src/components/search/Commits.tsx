@@ -3,6 +3,7 @@ import { ArrowUpRight, X } from "react-feather";
 import styled from "styled-components";
 import { getCommits } from "../../api/searchHelper";
 import { useSearch } from "../../contexts/searchContext";
+import { getdate } from "../../helpers/numberHelper";
 
 export const Commits: React.FC = () => {
   const { userRepo, setUserRepo } = useSearch();
@@ -17,11 +18,6 @@ export const Commits: React.FC = () => {
     };
     fetchCommits();
   }, [owner, repo]);
-
-  const getdate = (commitDate: string) => {
-    const date = new Date(commitDate);
-    return date.toLocaleDateString("en-US");
-  };
 
   return (
     <CommitsWrapper>

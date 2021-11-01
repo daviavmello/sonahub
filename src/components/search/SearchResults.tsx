@@ -13,16 +13,18 @@ export const SearchResults: React.FC = () => {
       {openModal && <Commits />}
       <CardWrapper openModal={openModal}>
         {users.items &&
-          users.items?.map((v, i) => (
-            <SearchCard
-              key={i}
-              title={v.full_name}
-              description={v.description}
-              stars={v.stargazers_count}
-              owner={v.owner.login}
-              repo={v.name}
-            ></SearchCard>
-          ))}
+          [...users.items]
+            ?.sort((a, b) => (a.stargazers_count < b.stargazers_count ? 1 : -1))
+            .map((v, i) => (
+              <SearchCard
+                key={i}
+                title={v.full_name}
+                description={v.description}
+                stars={v.stargazers_count}
+                owner={v.owner.login}
+                repo={v.name}
+              ></SearchCard>
+            ))}
       </CardWrapper>
     </SearchResultsWrapper>
   );

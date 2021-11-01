@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { useSearch } from "../../contexts/searchContext";
+import { numberFormatter } from "../../helpers/numberHelper";
 import { SearchBar } from "./SearchBar";
 
 export const Hero: React.FC = () => {
   const { users } = useSearch();
-
-  const numberFormatter = (num: number) => new Intl.NumberFormat().format(num);
 
   return (
     <HeroWrapper>
