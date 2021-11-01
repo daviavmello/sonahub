@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ArrowUpRight, X } from "react-feather";
 import styled from "styled-components";
@@ -11,6 +10,8 @@ export const Commits: React.FC = () => {
   const { owner, repo } = userRepo;
 
   const [commits, setCommits] = useState<Array<any>>([]);
+
+  console.log(owner);
 
   useEffect(() => {
     const fetchCommits = async () => {
@@ -32,31 +33,29 @@ export const Commits: React.FC = () => {
         <XIcon onClick={() => setUserRepo({ ...userRepo, openModal: false })} />
       </CommitsBar>
       {commits &&
-        commits.map((v, i) => {
-          return (
-            <CommitsRowWrapper key={i}>
-              <CommitsBar>
-                <CommitAuthor
-                  onClick={() => window.open(`${v.author.html_url}`, "_blank")}
-                >
-                  {v.commit.author.name}
-                </CommitAuthor>
-                <CommitDate>{getdate(v.commit.author.date)}</CommitDate>
-              </CommitsBar>
-              <CommitsRow>
-                <Message>{v.commit.message}</Message>
-              </CommitsRow>
-              <CommitsRow>
-                <CommitButton
-                  onClick={() => window.open(`${v.html_url}`, "_blank")}
-                >
-                  see code&nbsp;
-                  <ArrowUpRightIcon />
-                </CommitButton>
-              </CommitsRow>
-            </CommitsRowWrapper>
-          );
-        })}
+        commits.map((v, i) => (
+          <CommitsRowWrapper key={i}>
+            <CommitsBar>
+              <CommitAuthor
+                onClick={() => window.open(`${v.author.html_url}`, "_blank")}
+              >
+                {v.commit.author.name}
+              </CommitAuthor>
+              <CommitDate>{getdate(v.commit.author.date)}</CommitDate>
+            </CommitsBar>
+            <CommitsRow>
+              <Message>{v.commit.message}</Message>
+            </CommitsRow>
+            <CommitsRow>
+              <CommitButton
+                onClick={() => window.open(`${v.html_url}`, "_blank")}
+              >
+                see code&nbsp;
+                <ArrowUpRightIcon />
+              </CommitButton>
+            </CommitsRow>
+          </CommitsRowWrapper>
+        ))}
     </CommitsWrapper>
   );
 };
@@ -70,8 +69,22 @@ const CommitsWrapper = styled.div`
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  animation: fadein 0.7s;
   ::-webkit-scrollbar {
     width: 0 !important;
+  }
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @media (max-width: 767px) {
+    left: 0;
+    padding: 1rem;
+    width: calc(100vw - 2rem);
   }
 `;
 

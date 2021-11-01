@@ -12,7 +12,8 @@ export const SearchBar: React.FC = () => {
       setUsers(data);
     };
     if (search.length > 0) fetchSearch();
-  }, [search, setUsers]);
+    else setUsers({});
+  }, [search, setSearch, setUsers]);
 
   return (
     <Input

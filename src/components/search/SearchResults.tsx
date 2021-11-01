@@ -7,26 +7,22 @@ import { SearchCard } from "./SearchCard";
 export const SearchResults: React.FC = () => {
   const { users, userRepo } = useSearch();
   const { openModal } = userRepo;
-  
+
   return (
     <SearchResultsWrapper>
       {openModal && <Commits />}
       <CardWrapper openModal={openModal}>
         {users &&
-          users.items?.map((v, i) => {
-            // console.log(v);
-
-            return (
-              <SearchCard
-                key={i}
-                title={v.full_name}
-                description={v.description}
-                stars={v.stargazers_count}
-                owner={v.owner.login}
-                repo={v.name}
-              ></SearchCard>
-            );
-          })}
+          users.items?.map((v, i) => (
+            <SearchCard
+              key={i}
+              title={v.full_name}
+              description={v.description}
+              stars={v.stargazers_count}
+              owner={v.owner.login}
+              repo={v.name}
+            ></SearchCard>
+          ))}
       </CardWrapper>
     </SearchResultsWrapper>
   );

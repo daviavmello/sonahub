@@ -15,6 +15,7 @@ export const getUsers = async (search: string) => {
     return undefined;
   }
 };
+
 export const getCommits = async (owner: string, repo: string) => {
   try {
     const res = await axios.get(

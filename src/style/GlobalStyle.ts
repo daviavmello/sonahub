@@ -22,6 +22,10 @@ h2 {
   margin-bottom: 2rem;
 }
 
+h3 {
+  word-wrap: break-word;
+}
+
 p {
   line-height: 1.7rem;
 }
