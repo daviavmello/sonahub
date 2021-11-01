@@ -9,7 +9,11 @@ const App: React.FC = () => {
   const [theme, setTheme] = useState("dark");
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState<IUsers>({});
-  const [userRepo, setUserRepo] = useState<IUserRepo>({ openModal: false });
+  const [userRepo, setUserRepo] = useState<IUserRepo>({
+    owner: "",
+    repo: "",
+    openModal: false,
+  });
   return (
     <SearchContext.Provider
       value={{

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ArrowUpRight, X } from "react-feather";
 import styled from "styled-components";
+import { getCommits } from "../../api/searchHelper";
 import { useSearch } from "../../contexts/searchContext";
 import { colors } from "../../style/colors";
 
@@ -12,25 +13,11 @@ export const Commits: React.FC = () => {
   const [commits, setCommits] = useState<Array<any>>([]);
 
   useEffect(() => {
-    const getCommits = async () => {
-      const res = await axios.get(
-        `${process.env.REACT_APP_URL}/repos/${owner}/${repo}/commits`,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_GITHUB_KEY}`,
-          },
-        }
-      );
-
-      try {
-        if (res.status === 200) {
-          setCommits(res.data);
-        }
-      } catch (e) {
-        console.error(e);
-      }
+    const fetchCommits = async () => {
+      const data = await getCommits(owner, repo);
+      setCommits(data);
     };
-    getCommits();
+    fetchCommits();
   }, [owner, repo]);
 
   const getdate = (commitDate: string) => {

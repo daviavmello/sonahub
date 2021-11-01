@@ -7,8 +7,8 @@ export interface IUsers {
 }
 
 export interface IUserRepo {
-  owner?: string;
-  repo?: string;
+  owner: string;
+  repo: string;
   openModal: boolean;
 }
 
@@ -30,7 +30,7 @@ export const SearchContext = createContext<ISearchContext>({
   setUsers: (users: IUsers) => users,
   theme: "dark",
   setTheme: (theme: string) => theme,
-  userRepo: { openModal: false },
+  userRepo: { owner: "", repo: "", openModal: false },
   setUserRepo: (repo: IUserRepo) => repo,
 });
 export const useSearch = () => useContext(SearchContext);
