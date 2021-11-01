@@ -1,7 +1,9 @@
 import { createGlobalStyle } from "styled-components";
+import { typeface } from "../fonts/font";
 
 const GlobalStyle = createGlobalStyle`
 body {
+  ${typeface};
   background: ${({ theme }) => theme.primary};
   transition: background 0.50s linear;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
