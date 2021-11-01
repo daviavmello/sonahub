@@ -7,11 +7,9 @@ Search for GitHub repos & find recent commits. This app requires a PAT (personal
 TypeScript, React, Context API, Styled Components & Axios.  
 ## Scripts
 
-In the project directory, you can run:
-
-#### `yarn start`
-
-To run the app in the development mode.\
+In the project directory, you can run: 
+##### `yarn start`
+to run the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
