@@ -4,33 +4,38 @@ import { IUserRepo, IUsers, SearchContext } from "./contexts/searchContext";
 import GlobalStyle from "./style/GlobalStyle";
 import { Main } from "./components/Main";
 import { Navbar } from "./components/navbar/Navbar";
+import { darkTheme, lightTheme } from "./style/colors";
+import { ThemeProvider } from "styled-components";
 
 const App: React.FC = () => {
-  const [theme, setTheme] = useState("dark");
-  const [search, setSearch] = useState("");
+  const [colorMode, setColorMode] = useState<string>(localStorage.getItem("color-mode") || "dark");
+  const [search, setSearch] = useState<string>("");
   const [users, setUsers] = useState<IUsers>({});
   const [userRepo, setUserRepo] = useState<IUserRepo>({
     owner: "",
     repo: "",
     openModal: false,
   });
+
   return (
-    <SearchContext.Provider
-      value={{
-        search,
-        setSearch,
-        users,
-        setUsers,
-        theme,
-        setTheme,
-        userRepo,
-        setUserRepo,
-      }}
-    >
-      <GlobalStyle />
-      <Navbar />
-      <Main />
-    </SearchContext.Provider>
+    <ThemeProvider theme={colorMode === "dark" ? darkTheme : lightTheme}>
+      <SearchContext.Provider
+        value={{
+          search,
+          setSearch,
+          users,
+          setUsers,
+          colorMode,
+          setColorMode,
+          userRepo,
+          setUserRepo,
+        }}
+      >
+        <GlobalStyle />
+        <Navbar />
+        <Main />
+      </SearchContext.Provider>
+    </ThemeProvider>
   );
 };
 

@@ -3,15 +3,12 @@ import { ArrowUpRight, X } from "react-feather";
 import styled from "styled-components";
 import { getCommits } from "../../api/searchHelper";
 import { useSearch } from "../../contexts/searchContext";
-import { colors } from "../../style/colors";
 
 export const Commits: React.FC = () => {
   const { userRepo, setUserRepo } = useSearch();
   const { owner, repo } = userRepo;
 
   const [commits, setCommits] = useState<Array<any>>([]);
-
-  console.log(owner);
 
   useEffect(() => {
     const fetchCommits = async () => {
@@ -65,7 +62,7 @@ const CommitsWrapper = styled.div`
   z-index: 1;
   width: inherit;
   height: inherit;
-  background: ${colors.primary};
+  background: ${({ theme }) => theme.primary};
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -98,12 +95,12 @@ const CommitsBar = styled.div`
 
 const CommitsText = styled.h3`
   font-family: "Consolas", "Courier", monospace;
-  color: ${colors.tertiary};
+  color: ${({ theme }) => theme.tertiary};
 `;
 
 const XIcon = styled(X)`
   cursor: pointer;
-  color: ${colors.tertiary};
+  color: ${({ theme }) => theme.tertiary};
 `;
 
 const CommitsRow = styled.div`
@@ -113,29 +110,29 @@ const CommitsRow = styled.div`
 
 const CommitsRowWrapper = styled.div`
   padding: 1.5rem 0;
-  border-bottom: 1px solid ${colors.divider};
+  border-bottom: 1px solid ${({ theme }) => theme.divider};
   :last-child {
     border-bottom: none;
   }
 `;
 
 const CommitAuthor = styled.p`
-  color: ${colors.tertiary};
+  color: ${({ theme }) => theme.tertiary};
   font-family: "Consolas", "Courier", monospace;
   cursor: pointer;
 
   &:hover {
-    color: ${colors.secondary};
+    color: ${({ theme }) => theme.secondary};
   }
 `;
 
 const Message = styled.p`
-  color: ${colors.medium};
+  color: ${({ theme }) => theme.medium};
   margin-bottom: 0.75rem;
 `;
 
 const CommitDate = styled.p`
-  color: ${colors.medium};
+  color: ${({ theme }) => theme.medium};
   font-family: "Consolas", "Courier", monospace;
   font-size: 0.8rem;
 `;

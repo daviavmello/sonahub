@@ -1,24 +1,28 @@
 import { createGlobalStyle } from "styled-components";
-import { colors } from "./colors";
 
 const GlobalStyle = createGlobalStyle`
+body {
+  background: ${({ theme }) => theme.primary};
+  transition: background 0.50s linear;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  }
 * {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 html {
-  background: ${colors.primary};
+  background: ${({ theme }) => theme.primary};
 h1 {
   text-transform: capitalize;
-  color: ${colors.medium};
+  color: ${({ theme }) => theme.medium};
   margin: 0;
   font-weight: 400;
   font-size: x-large;
 }
 
 h2 {
-  color: ${colors.tertiary};
+  color: ${({ theme }) => theme.tertiary};
   margin-bottom: 2rem;
 }
 
@@ -33,29 +37,29 @@ p {
 input {
   box-sizing: border-box;
   background: transparent;
-  color: ${colors.secondary};
+  color: ${({ theme }) => theme.secondary};
   border: 0;
-  border: 2px solid ${colors.medium};
+  border: 2px solid ${({ theme }) => theme.medium};
   border-radius: 0.5rem;
   padding: 0.5rem;
   ::placeholder {
     font-family: "Consolas", "Courier", monospace;
-    color: ${colors.medium};
+    color: ${({ theme }) => theme.medium};
     text-transform: capitalize;
   }
   :focus {
     outline: none;
     box-shadow: 0px 0px 15px 5px rgb(0 0 0 / 30%);
-    border: 2px solid ${colors.tertiary};
+    border: 2px solid ${({ theme }) => theme.tertiary};
     transition: all 0.5s linear;
   }
 }
 
 button {
-  color: ${colors.medium};
-  background: ${colors.primary};
+  color: ${({ theme }) => theme.medium};
+  background: ${({ theme }) => theme.primary};
   padding: 0.25rem 0.5rem;
-  border: 1px solid ${colors.medium};
+  border: 1px solid ${({ theme }) => theme.medium};
   border-radius: 0.5rem;
   text-transform: uppercase;
   font-family: "Consolas", "Courier", monospace;
@@ -63,8 +67,8 @@ button {
   cursor: pointer;
   &:hover {
     outline: none;
-    border: 1px solid ${colors.tertiary};
-    color: ${colors.tertiary};
+    border: 1px solid ${({ theme }) => theme.tertiary};
+    color: ${({ theme }) => theme.tertiary};
     transition: all 0.5s linear;
   }
 }

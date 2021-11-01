@@ -2,7 +2,6 @@ import React from "react";
 import { Star } from "react-feather";
 import styled from "styled-components";
 import { useSearch } from "../../contexts/searchContext";
-import { colors } from "../../style/colors";
 
 interface ISearchCard {
   title: string;
@@ -36,15 +35,15 @@ export const SearchCard: React.FC<ISearchCard> = ({
 };
 
 const Card = styled.div`
-  background: ${colors.medium};
+  background: ${({ theme }) => theme.card};
   margin: 1rem;
   padding: 1rem;
   cursor: pointer;
-  border: 2px solid ${colors.medium};
+  border: 2px solid ${({ theme }) => theme.card};
   border-radius: 0.5rem;
   &:hover {
     transition: all 0.5s linear;
-    box-shadow: 0px 0px 15px 5px rgb(0 0 0 / 80%);
+    box-shadow: 0px 0px 15px 5px rgb(0 0 0 / 30%);
   }
 `;
 
@@ -59,9 +58,9 @@ const IconWrapper = styled.div`
 
 const StarIcon = styled(Star)`
   margin-right: 0.5rem;
-  stroke: ${colors.primary};
+  stroke: ${({ theme }) => theme.primary};
 
   &:hover {
-    fill: ${colors.primary};
+    fill: ${({ theme }) => theme.primary};
   }
 `;

@@ -1,14 +1,25 @@
 import React from "react";
-import { Sun } from "react-feather";
+import { Moon, Sun } from "react-feather";
 import styled from "styled-components";
-import { colors } from "../../style/colors";
+import { useSearch } from "../../contexts/searchContext";
 import { Logo } from "./Logo";
 
 export const Navbar: React.FC = () => {
+  const { colorMode, setColorMode } = useSearch();
+
+  const handleColorMode = (color: string) => {
+    localStorage.setItem("color-mode", color);
+    setColorMode(color);
+  };
+
   return (
     <NavWrapper>
       <Logo />
-      <ColorModeIcon />
+      {colorMode === "dark" ? (
+        <SunIcon onClick={() => handleColorMode("light")} />
+      ) : (
+        <MoonIcon onClick={() => handleColorMode("dark")} />
+      )}
     </NavWrapper>
   );
 };
@@ -18,12 +29,18 @@ const NavWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  /* position: sticky; */
   margin-bottom: 2rem;
   height: 5vh;
 `;
 
-const ColorModeIcon = styled(Sun)`
+const SunIcon = styled(Sun)`
+  cursor: pointer;
   width: fit-content;
-  color: ${colors.medium};
+  color: ${({ theme }) => theme.medium};
+`;
+
+const MoonIcon = styled(Moon)`
+  cursor: pointer;
+  width: fit-content;
+  color: ${({ theme }) => theme.medium};
 `;

@@ -17,8 +17,8 @@ export interface ISearchContext {
   setSearch: (search: string) => void;
   users: IUsers;
   setUsers: (users: IUsers) => void;
-  theme: string;
-  setTheme: (theme: string) => void;
+  colorMode: string;
+  setColorMode: (colorMode: string) => void;
   userRepo: IUserRepo;
   setUserRepo: (repo: IUserRepo) => void;
 }
@@ -28,8 +28,8 @@ export const SearchContext = createContext<ISearchContext>({
   setSearch: (search: string) => search,
   users: {},
   setUsers: (users: IUsers) => users,
-  theme: "dark",
-  setTheme: (theme: string) => theme,
+  colorMode: "dark",
+  setColorMode: (colorMode: string) => colorMode,
   userRepo: { owner: "", repo: "", openModal: false },
   setUserRepo: (repo: IUserRepo) => repo,
 });

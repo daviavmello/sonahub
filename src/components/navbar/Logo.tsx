@@ -1,7 +1,6 @@
 import React from "react";
 import { Box } from "react-feather";
 import styled from "styled-components";
-import { colors } from "../../style/colors";
 
 export const Logo: React.FC = () => {
   return (
@@ -22,5 +21,5 @@ const LogoWrapper = styled.div`
 const BoxLogo = styled(Box)`
   margin-right: 1rem;
   width: fit-content;
-  color: ${colors.medium};
+  color: ${({ theme }) => theme.medium};
 `;
