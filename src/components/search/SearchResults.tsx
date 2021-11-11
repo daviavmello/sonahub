@@ -32,6 +32,7 @@ export const SearchResults: React.FC = () => {
       {badRequest && <BadRequest />}
       <CardWrapper>
         {loading && !badRequest && search.length > 0 && <Loader />}
+        {!loading && <SearchResultsText>Search Results</SearchResultsText>}
         {!loading &&
           results?.map((v, i) => (
             <SearchCard
@@ -59,6 +60,15 @@ const CardWrapper = styled.div`
   -ms-overflow-style: none;
   ::-webkit-scrollbar {
     width: 0 !important;
+  }
+`;
+
+const SearchResultsText = styled.h3`
+  font-family: "Consolas", "Courier", monospace;
+  color: ${({ theme }) => theme.tertiary};
+  display: none;
+  @media (max-width: 767px) {
+    display: initial;
   }
 `;
 

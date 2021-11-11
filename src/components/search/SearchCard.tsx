@@ -46,6 +46,9 @@ const Card = styled.div`
     transition: all 0.5s linear;
     box-shadow: 0px 0px 15px 5px rgb(0 0 0 / 30%);
   }
+  @media (max-width: 767px) {
+    margin: 1rem 0;
+  }
 `;
 
 const Description = styled.div`
