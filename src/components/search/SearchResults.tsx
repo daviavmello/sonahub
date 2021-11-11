@@ -1,30 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSearch } from "../../contexts/searchContext";
+import { Loader } from "../../loader/Loader";
 import { Commits } from "./Commits";
 import { SearchCard } from "./SearchCard";
 
 export const SearchResults: React.FC = () => {
-  const { users, userRepo } = useSearch();
+  const { search, users, userRepo } = useSearch();
   const { openModal } = userRepo;
+
+  const [loading, setLoading] = useState<boolean>(true);
+  const [results, setResults] = useState<Array<any>>();
+
+  useEffect(() => {
+    const handleSearch = () => {
+      if (users.items) {
+        setResults(
+          [...users.items]?.sort((a, b) =>
+            a.stargazers_count < b.stargazers_count ? 1 : -1
+          )
+        );
+        return setLoading(false);
+      } else {
+        return setLoading(true);
+      }
+    };
+    handleSearch();
+  }, [users.items]);
 
   return (
     <SearchResultsWrapper openModal={openModal}>
       {openModal && <Commits />}
       <CardWrapper>
-        {users.items &&
-          [...users.items]
-            ?.sort((a, b) => (a.stargazers_count < b.stargazers_count ? 1 : -1))
-            .map((v, i) => (
-              <SearchCard
-                key={i}
-                title={v.full_name}
-                description={v.description}
-                stars={v.stargazers_count}
-                owner={v.owner.login}
-                repo={v.name}
-              ></SearchCard>
-            ))}
+        {loading && search.length > 0 && <Loader />}
+        {!loading &&
+          results?.map((v, i) => (
+            <SearchCard
+              key={i}
+              title={v.full_name}
+              description={v.description}
+              stars={v.stargazers_count}
+              owner={v.owner.login}
+              repo={v.name}
+            ></SearchCard>
+          ))}
+        {!loading && search.length > 0 && <div>Not found</div>}
       </CardWrapper>
     </SearchResultsWrapper>
   );
