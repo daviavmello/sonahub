@@ -8,10 +8,9 @@ import { Commits } from "./Commits";
 import { SearchCard } from "./SearchCard";
 
 export const SearchResults: React.FC = () => {
-  const { search, users, userRepo, badRequest } = useSearch();
+  const { search, users, userRepo, badRequest, loading } = useSearch();
   const { openModal } = userRepo;
 
-  const [loading, setLoading] = useState<boolean>(true);
   const [results, setResults] = useState<Array<any> | null>(null);
 
   useEffect(() => {
@@ -22,11 +21,9 @@ export const SearchResults: React.FC = () => {
             a.stargazers_count < b.stargazers_count ? 1 : -1
           )
         );
-        return setLoading(false);
       }
     };
     handleSearch();
-    return () => setLoading(true);
   }, [users.items]);
 
   return (

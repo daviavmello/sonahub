@@ -20,5 +20,3 @@ const NotFoundWrapper = styled.div`
   justify-content: flex-start;
   align-items: baseline;
 `;
-
-// asdasasdasdasda

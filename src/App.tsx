@@ -19,6 +19,7 @@ const App: React.FC = () => {
     openModal: false,
   });
   const [badRequest, setBadRequest] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   return (
     <ThemeProvider theme={colorMode === "dark" ? darkTheme : lightTheme}>
@@ -34,6 +35,8 @@ const App: React.FC = () => {
           setUserRepo,
           badRequest,
           setBadRequest,
+          loading,
+          setLoading,
         }}
       >
         <GlobalStyle />

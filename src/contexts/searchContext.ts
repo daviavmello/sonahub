@@ -23,6 +23,8 @@ export interface ISearchContext {
   setUserRepo: (repo: IUserRepo) => void;
   badRequest: boolean;
   setBadRequest: (badRequest: boolean) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 export const SearchContext = createContext<ISearchContext>({
@@ -35,6 +37,8 @@ export const SearchContext = createContext<ISearchContext>({
   userRepo: { owner: "", repo: "", openModal: false },
   setUserRepo: (repo: IUserRepo) => repo,
   badRequest: false,
-  setBadRequest: (badRequest: boolean) => badRequest
+  setBadRequest: (badRequest: boolean) => badRequest,
+  loading: true,
+  setLoading: (loading: boolean) => loading,
 });
 export const useSearch = () => useContext(SearchContext);

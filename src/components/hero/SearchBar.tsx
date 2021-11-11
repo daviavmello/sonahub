@@ -5,10 +5,12 @@ import { getUsers } from "../../api/searchHelper";
 import { useSearch } from "../../contexts/searchContext";
 
 export const SearchBar: React.FC = () => {
-  const { search, setSearch, setUsers, setBadRequest } = useSearch();
+  const { search, setSearch, setUsers, setBadRequest, setLoading } =
+    useSearch();
 
   useEffect(() => {
     const fetchSearch = async () => {
+      setLoading(true);
       const data = await getUsers(search);
       if (data.status >= 400) {
         setBadRequest(true);
@@ -18,10 +20,11 @@ export const SearchBar: React.FC = () => {
         }, 61000);
       }
       setUsers(data);
+      setLoading(false);
     };
     if (search.length > 0) fetchSearch();
     else setUsers({});
-  }, [search, setBadRequest, setSearch, setUsers]);
+  }, [search, setBadRequest, setLoading, setSearch, setUsers]);
 
   return (
     <Input
