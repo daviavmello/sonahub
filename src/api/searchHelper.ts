@@ -11,8 +11,8 @@ export const getUsers = async (search: string) => {
       }
     );
     return res.data;
-  } catch {
-    return undefined;
+  } catch (error: any) {
+    return error.response;
   }
 };
 
@@ -27,7 +27,7 @@ export const getCommits = async (owner: string, repo: string) => {
       }
     );
     return res.data;
-  } catch {
-    return undefined;
+  } catch (error: any) {
+    return error.response;
   }
 };

@@ -5,7 +5,7 @@ import { numberFormatter } from "../../helpers/numberHelper";
 import { SearchBar } from "./SearchBar";
 
 export const Hero: React.FC = () => {
-  const { users } = useSearch();
+  const { users, badRequest } = useSearch();
 
   return (
     <HeroWrapper>
@@ -17,12 +17,12 @@ export const Hero: React.FC = () => {
         one search away.
       </h2>
       <SearchBar />
-      {users.items ? (
-        <SearchResultsText>
+      {!badRequest && users.items ? (
+        <h4>
           There are {numberFormatter(users.total_count!)} repos available.
-        </SearchResultsText>
+        </h4>
       ) : (
-        <SearchResultsText>&nbsp;</SearchResultsText>
+        <h4>&nbsp;</h4>
       )}
     </HeroWrapper>
   );
@@ -48,9 +48,4 @@ const HeroWrapper = styled.div`
   @media (min-width: 992px) {
     width: calc(50% - 1rem);
   }
-`;
-
-const SearchResultsText = styled.h4`
-  font-family: "Consolas", "Courier", monospace;
-  color: ${({ theme }) => theme.tertiary};
 `;

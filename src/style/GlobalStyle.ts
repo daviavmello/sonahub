@@ -32,6 +32,11 @@ h3 {
   word-wrap: break-word;
 }
 
+h4 {
+  font-family: "Consolas", "Courier", monospace;
+  color: ${({ theme }) => theme.tertiary};
+}
+
 p {
   line-height: 1.7rem;
 }

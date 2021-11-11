@@ -21,6 +21,8 @@ export interface ISearchContext {
   setColorMode: (colorMode: string) => void;
   userRepo: IUserRepo;
   setUserRepo: (repo: IUserRepo) => void;
+  badRequest: boolean;
+  setBadRequest: (badRequest: boolean) => void;
 }
 
 export const SearchContext = createContext<ISearchContext>({
@@ -32,5 +34,7 @@ export const SearchContext = createContext<ISearchContext>({
   setColorMode: (colorMode: string) => colorMode,
   userRepo: { owner: "", repo: "", openModal: false },
   setUserRepo: (repo: IUserRepo) => repo,
+  badRequest: false,
+  setBadRequest: (badRequest: boolean) => badRequest
 });
 export const useSearch = () => useContext(SearchContext);

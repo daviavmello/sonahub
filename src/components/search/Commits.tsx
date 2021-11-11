@@ -6,7 +6,7 @@ import { useSearch } from "../../contexts/searchContext";
 import { getdate } from "../../helpers/numberHelper";
 
 export const Commits: React.FC = () => {
-  const { userRepo, setUserRepo } = useSearch();
+  const { userRepo, setUserRepo, setBadRequest, setUsers } = useSearch();
   const { owner, repo } = userRepo;
 
   const [commits, setCommits] = useState<Array<any>>([]);
@@ -14,10 +14,17 @@ export const Commits: React.FC = () => {
   useEffect(() => {
     const fetchCommits = async () => {
       const data = await getCommits(owner, repo);
+      if (data.status >= 400) {
+        setBadRequest(true);
+        setTimeout(() => {
+          setBadRequest(false);
+          fetchCommits();
+        }, 61000);
+      }
       setCommits(data);
     };
     fetchCommits();
-  }, [owner, repo]);
+  }, [owner, repo, setBadRequest, setUsers]);
 
   return (
     <CommitsWrapper>

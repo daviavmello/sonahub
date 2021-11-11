@@ -8,7 +8,9 @@ import { darkTheme, lightTheme } from "./style/colors";
 import { ThemeProvider } from "styled-components";
 
 const App: React.FC = () => {
-  const [colorMode, setColorMode] = useState<string>(localStorage.getItem("color-mode") || "dark");
+  const [colorMode, setColorMode] = useState<string>(
+    localStorage.getItem("color-mode") || "dark"
+  );
   const [search, setSearch] = useState<string>("");
   const [users, setUsers] = useState<IUsers>({});
   const [userRepo, setUserRepo] = useState<IUserRepo>({
@@ -16,6 +18,7 @@ const App: React.FC = () => {
     repo: "",
     openModal: false,
   });
+  const [badRequest, setBadRequest] = useState<boolean>(false);
 
   return (
     <ThemeProvider theme={colorMode === "dark" ? darkTheme : lightTheme}>
@@ -29,6 +32,8 @@ const App: React.FC = () => {
           setColorMode,
           userRepo,
           setUserRepo,
+          badRequest,
+          setBadRequest,
         }}
       >
         <GlobalStyle />

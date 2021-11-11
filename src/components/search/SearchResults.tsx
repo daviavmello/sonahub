@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSearch } from "../../contexts/searchContext";
 import { Loader } from "../../loader/Loader";
+import { BadRequest } from "../error/BadRequest";
+import { NotFound } from "../error/NotFound";
 import { Commits } from "./Commits";
 import { SearchCard } from "./SearchCard";
 
 export const SearchResults: React.FC = () => {
-  const { search, users, userRepo } = useSearch();
+  const { search, users, userRepo, badRequest } = useSearch();
   const { openModal } = userRepo;
 
   const [loading, setLoading] = useState<boolean>(true);
-  const [results, setResults] = useState<Array<any>>();
+  const [results, setResults] = useState<Array<any> | null>(null);
 
   useEffect(() => {
     const handleSearch = () => {
@@ -21,18 +23,18 @@ export const SearchResults: React.FC = () => {
           )
         );
         return setLoading(false);
-      } else {
-        return setLoading(true);
       }
     };
     handleSearch();
+    return () => setLoading(true);
   }, [users.items]);
 
   return (
     <SearchResultsWrapper openModal={openModal}>
       {openModal && <Commits />}
+      {badRequest && <BadRequest />}
       <CardWrapper>
-        {loading && search.length > 0 && <Loader />}
+        {loading && !badRequest && search.length > 0 && <Loader />}
         {!loading &&
           results?.map((v, i) => (
             <SearchCard
@@ -44,7 +46,7 @@ export const SearchResults: React.FC = () => {
               repo={v.name}
             ></SearchCard>
           ))}
-        {!loading && search.length > 0 && <div>Not found</div>}
+        {!loading && !badRequest && results?.length === 0 && <NotFound />}
       </CardWrapper>
     </SearchResultsWrapper>
   );
