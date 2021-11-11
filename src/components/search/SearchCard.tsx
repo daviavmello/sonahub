@@ -60,8 +60,4 @@ const IconWrapper = styled.div`
 const StarIcon = styled(Star)`
   margin-right: 0.5rem;
   stroke: ${({ theme }) => theme.primary};
-
-  &:hover {
-    fill: ${({ theme }) => theme.primary};
-  }
 `;

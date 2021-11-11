@@ -32,6 +32,14 @@ export const Commits: React.FC = () => {
         <CommitsText>Browse commits</CommitsText>
         <XIcon onClick={() => setUserRepo({ ...userRepo, openModal: false })} />
       </CommitsBar>
+      <CommitTitle
+        onClick={() =>
+          window.open(`http://github.com/${owner}/${repo}`, "_blank")
+        }
+      >
+        <span>/</span>
+        {repo}
+      </CommitTitle>
       {commits &&
         commits.map((v, i) => (
           <CommitsRowWrapper key={i}>
@@ -83,7 +91,6 @@ const CommitsWrapper = styled.div`
   }
   @media (max-width: 767px) {
     left: 0;
-    padding: 1rem;
     width: calc(100vw - 2rem);
   }
 `;
@@ -99,6 +106,19 @@ const CommitsBar = styled.div`
 const CommitsText = styled.h3`
   font-family: "Consolas", "Courier", monospace;
   color: ${({ theme }) => theme.tertiary};
+`;
+
+const CommitTitle = styled.h3`
+  color: ${({ theme }) => theme.tertiary};
+  margin-top: 2rem;
+  cursor: pointer;
+  &:hover {
+    color: ${({ theme }) => theme.secondary};
+  }
+
+  span {
+    color: ${({ theme }) => theme.medium};
+  }
 `;
 
 const XIcon = styled(X)`
