@@ -39,6 +39,7 @@ h4 {
 
 p {
   line-height: 1.7rem;
+  overflow-wrap: break-word;
 }
 
 input {
