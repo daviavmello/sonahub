@@ -32,7 +32,7 @@ export const SearchResults: React.FC = () => {
       {badRequest && <BadRequest />}
       <CardWrapper>
         {loading && !badRequest && search.length > 0 && <Loader />}
-        {!loading && !badRequest && results?.length !== 0 && (
+        {!loading && !badRequest && search.length > 0 && (
           <SearchResultsText>Search Results</SearchResultsText>
         )}
         {!loading &&
