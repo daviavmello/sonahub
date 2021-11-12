@@ -24,6 +24,19 @@ export const Hero: React.FC = () => {
       ) : (
         <h4>&nbsp;</h4>
       )}
+      <Credit>
+        <CreditText>
+          Made with&nbsp; <span>❤️</span>&nbsp; by{" "}
+          <span
+            onClick={() =>
+              window.open("https://github.com/daviavmello", "_blank")
+            }
+          >
+            Davi Mello
+          </span>
+          .
+        </CreditText>
+      </Credit>
     </HeroWrapper>
   );
 };
@@ -47,5 +60,22 @@ const HeroWrapper = styled.div`
 
   @media (min-width: 992px) {
     width: calc(50% - 1rem);
+  }
+`;
+
+const Credit = styled.div`
+  position: absolute;
+  bottom: 2rem;
+`;
+
+const CreditText = styled.p`
+  color: ${({ theme }) => theme.medium};
+
+  span {
+    cursor: pointer;
+
+    &:hover {
+      border-bottom: 1px solid ${({ theme }) => theme.medium};
+    }
   }
 `;
