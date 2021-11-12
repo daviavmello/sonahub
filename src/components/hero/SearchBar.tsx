@@ -1,3 +1,4 @@
+import axios from "axios";
 import _ from "lodash";
 import React, { useEffect } from "react";
 import styled from "styled-components";
@@ -9,9 +10,10 @@ export const SearchBar: React.FC = () => {
     useSearch();
 
   useEffect(() => {
+    const request = axios.CancelToken.source();
     const fetchSearch = async () => {
       setLoading(true);
-      const data = await getUsers(search);
+      const data = await getUsers(search, request);
       if (data.status >= 400) {
         setBadRequest(true);
         setTimeout(() => {
@@ -24,13 +26,16 @@ export const SearchBar: React.FC = () => {
     };
     if (search.length > 0) fetchSearch();
     else setUsers({});
+    return () => {
+      request.cancel();
+    };
   }, [search, setBadRequest, setLoading, setSearch, setUsers]);
 
   return (
     <Input
       type="search"
       placeholder="search"
-      onInput={_.throttle((e) => setSearch(e.target.value), 1000)}
+      onChange={_.debounce((e) => setSearch(e.target.value), 1000)}
     />
   );
 };

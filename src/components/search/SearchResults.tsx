@@ -21,7 +21,7 @@ export const SearchResults: React.FC = () => {
             a.stargazers_count < b.stargazers_count ? 1 : -1
           )
         );
-      }
+      } else setResults(null);
     };
     handleSearch();
   }, [users.items]);
@@ -32,7 +32,9 @@ export const SearchResults: React.FC = () => {
       {badRequest && <BadRequest />}
       <CardWrapper>
         {loading && !badRequest && search.length > 0 && <Loader />}
-        {!loading && <SearchResultsText>Search Results</SearchResultsText>}
+        {!loading && !badRequest && results?.length !== 0 && (
+          <SearchResultsText>Search Results</SearchResultsText>
+        )}
         {!loading &&
           results?.map((v, i) => (
             <SearchCard
